@@ -3,32 +3,94 @@ package com.sergei.fit.fitApp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("users")
+@Document(collection = "users")
 public class User {
-
     @Id
     private String id;
-
     private String name;
     private int age;
-    private Enum<Sex> sex;
-    private double height;
-    private double weight;
+    private double height; // in cm
+    private double weight; // in kg
+    private String activityLevel; // e.g., sedentary, lightly active, etc.
+    private String gender;
 
-    private Enum<ActivityLevel> Activity;
-    private int PAL_value;
-    private double dailyCalorieRequirement;
 
-    public User(final String name, final int age, final Enum sex, final double height, final double weight, final Enum<ActivityLevel> activity) {
-        this.name = name;
+    public User(String name, int age, double height, double weight, String gender, String activityLevel) {
+        this.name=name;
         this.age = age;
-        this.sex = sex;
         this.height = height;
         this.weight = weight;
-        this.Activity = activity;
+        this.gender=gender;
+        this.activityLevel = activityLevel;
     }
 
-    public double getDailyCalorieRequirement(){
-        return dailyCalorieRequirement=new CalorieRequirement(age,sex,height,weight,Activity).calculateToatalCalories((ActivityLevel) Activity);
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", activityLevel='" + activityLevel + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(String activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+    // Constructor, getters, and setters
 }
