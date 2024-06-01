@@ -26,7 +26,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> findAllUsersById(List<String> ids){
+    /* EXAMPLE: curl -X GET "http://localhost:8080/users/find?ids=1,2,3"   */
+    public List<User> findAllUsersByIds(List<String> ids){
         return userRepository.findAllById(ids);
     }
 

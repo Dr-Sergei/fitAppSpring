@@ -29,9 +29,9 @@ public class MyController {
         return userService.findAllUsers();
     }
 
-    @GetMapping("/findAll")
-    public List<User> getUsersById(@RequestParam List<String> ids) {
-        return userService.findAllUsersById(ids);
+    @GetMapping("/find")
+    public List<User> getUsersByIds(@RequestParam("ids") List<String> ids) {
+        return userService.findAllUsersByIds(ids);
     }
 
 
