@@ -1,18 +1,24 @@
 package com.sergei.fit.fitApp.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Getter
+@Setter
 @Document(collection = "users")
 public class User {
     @Id
     private String id;
+
     private String name;
     private int age;
     private double height; // in cm
     private double weight; // in kg
     private String activityLevel; // e.g., sedentary, lightly active, etc.
     private String gender;
+    private TrainingsPlan trainingsPlan;
 
 
     public User(String name, int age, double height, double weight, String gender, String activityLevel) {
@@ -91,6 +97,14 @@ public class User {
 
     public void setActivityLevel(String activityLevel) {
         this.activityLevel = activityLevel;
+    }
+
+    public TrainingsPlan getTrainingsPlan() {
+        return trainingsPlan;
+    }
+
+    public void setTrainingsPlan(TrainingsPlan trainingsPlan) {
+        this.trainingsPlan = trainingsPlan;
     }
     // Constructor, getters, and setters
 }
